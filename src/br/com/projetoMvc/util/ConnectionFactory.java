@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class ConnectionFactory {
 
-	public static final String PATH = "jdbc:postgresql://localhost:5432/db_adas";
+	public static final String PATH = "jdbc:postgresql://localhost:5432/db_padaria";
 	public static final String USER = "postgres";
 	public static final String PASSWORD = "2149";
 
