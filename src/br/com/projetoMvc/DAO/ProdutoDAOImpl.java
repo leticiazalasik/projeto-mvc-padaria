@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.com.projetoMvc.model.Produto;
 import br.com.projetoMvc.util.ConnectionFactory;
 
@@ -56,8 +58,36 @@ public class ProdutoDAOImpl implements GenericDAO{
 
 	@Override
 	public Object listaPorId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+
+		PreparedStatement stmt = null; 
+		Produto produto = null; 
+		ResultSet rs=null; 
+		
+		String sql = "SELECT * FROM produto WHERE id= "+ "(?)"; 
+	try { 	
+		stmt = conn.prepareStatement(sql); 
+		stmt.setInt(1, id);
+		stmt.executeQuery();
+		rs=stmt.executeQuery(); 
+		
+		if (rs.next()) { 
+			produto = new Produto (rs.getInt("id"), rs.getString("descricao")); 
+	 		JOptionPane.showMessageDialog(null, "Produto localizado!");
+		}
+	} catch (SQLException ex){
+System.out.println("Problemas na DAO, Erro: " + ex.getMessage());
+		ex.printStackTrace();
+		} finally { 
+			try { 
+				ConnectionFactory.closeConnection(conn, stmt, rs);
+			} catch (Exception ex) { 
+				System.out.println("Problemas ao fechar conexão! Erro: " + ex.getMessage());
+			}
+		
+	}
+		
+	return produto; 
+	
 	}
 
 	@Override

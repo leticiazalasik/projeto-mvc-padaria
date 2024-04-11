@@ -8,6 +8,8 @@ import br.com.projetoMvc.DAO.ProdutoDAOImpl;
 import br.com.projetoMvc.model.Produto;
 
 public class ProdutoController {
+	
+	Produto produto = null;
 
 	public List<Produto>listarTodos(){ 
 		List<Produto>listaProdutos=new ArrayList<Produto>();
@@ -24,5 +26,20 @@ public class ProdutoController {
 			e.printStackTrace();
 		}
 		return listaProdutos; 
+	}
+	
+	public Produto listarPorId (int id) { 
+		try { 
+			GenericDAO dao = new ProdutoDAOImpl(); 
+			
+			Produto produto = (Produto) dao.listaPorId(id); 
+			return produto; 
+			
+	} catch (Exception e){ 
+			System.out.println("Erro na controller ao apresentar produto.");
+			e.printStackTrace();
+			return null; 
+			
+		}
 	}
 }

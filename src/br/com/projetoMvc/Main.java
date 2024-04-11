@@ -3,6 +3,8 @@ package br.com.projetoMvc;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.com.projetoMvc.controller.ProdutoController;
 import br.com.projetoMvc.model.Produto;
 
@@ -23,6 +25,25 @@ public class Main {
 			System.out.print("-");
 			System.out.println(produto.getDescricao());
 		}
+		
+		
+		int opcao = Integer.parseInt(JOptionPane.showInputDialog("Digite o id: ")); 
+		
+		Produto produtoEncontrado = controller.listarPorId(opcao);
+
+		if (produtoEncontrado != null) {
+			String mensagemLista2=" "
+					.concat("Id: ") 
+					.concat(String.valueOf(produtoEncontrado.getId())) //concat só recebe string entao preciso converter 
+					.concat("\n")
+					.concat("Descrição: ")
+					.concat(produtoEncontrado.getDescricao()); 
+			
+			JOptionPane.showMessageDialog(null, mensagemLista2);
+		} else {
+			JOptionPane.showMessageDialog(null, "Não existe produto com esse código na lista");
+		}
+		
 		
 	}
 
