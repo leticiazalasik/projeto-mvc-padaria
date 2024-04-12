@@ -12,7 +12,24 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
+		//Criando Menu 
+		
+		String menu = " "
+				.concat(" ** Menu do sistema **\n")
+				.concat(" 1- Cadastrar \n")
+				.concat(" 2- Listar Todos \n")
+				.concat(" 3- Listar Por ID \n")
+				.concat(" 4- Editar \n")
+				.concat(" 5- Excluir \n")
+				.concat(" 6- Finalizar \n")
+				.concat(" Digite a opção desejada: \n"); 
+		
+		String option = JOptionPane.showInputDialog(menu); 
+		int optionMenu = Integer.parseInt(option); 
+		
+		
+		
 		//testando o listar todos 
 		ProdutoController controller = new ProdutoController(); 
 		
