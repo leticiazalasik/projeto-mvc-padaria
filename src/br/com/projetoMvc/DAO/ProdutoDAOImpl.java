@@ -25,35 +25,35 @@ public class ProdutoDAOImpl implements GenericDAO{
 			}
 		}
 
-	@Override
-	public List<Object> listarTodos() {
-		List <Object> lista = new ArrayList<Object>();
-		PreparedStatement stmt = null; 
-		ResultSet rs = null; 
-		
-		String sql = "SELECT * FROM produto ORDER BY descricao"; 
-		
-		try { 
-			stmt=conn.prepareStatement(sql);
-			rs = stmt.executeQuery();
-			while (rs.next()) {
-				Produto produto = new Produto(); 
-				produto.setId(rs.getInt("id"));
-				produto.setDescricao(rs.getString("descricao"));
-				lista.add(produto); 
-			}
-		} catch (SQLException ex) { 
-			System.out.println("Problemas na DAO ao listar produto! Erro: " + ex.getMessage());
-			ex.printStackTrace();
-		} finally { 
-			try { 
-				ConnectionFactory.closeConnection(conn,stmt,rs);
-			} catch (Exception ex) { 
-				System.out.println("Problemas ao fechar a conexão! Erro: " + ex.getMessage());
-			}
-		}
-		return lista; 
-	}
+//	@Override
+//	public List<Object> listarTodos() {
+//		List <Object> lista = new ArrayList<Object>();
+//		PreparedStatement stmt = null; 
+//		ResultSet rs = null; 
+//		
+//		String sql = "SELECT * FROM produto ORDER BY descricao"; 
+//		
+//		try { 
+//			stmt=conn.prepareStatement(sql);
+//			rs = stmt.executeQuery();
+//			while (rs.next()) {
+//				Produto produto = new Produto(); 
+//				produto.setId(rs.getInt("id"));
+//				produto.setDescricao(rs.getString("descricao"));
+//				lista.add(produto); 
+//			}
+//		} catch (SQLException ex) { 
+//			System.out.println("Problemas na DAO ao listar produto! Erro: " + ex.getMessage());
+//			ex.printStackTrace();
+//		} finally { 
+//			try { 
+//				ConnectionFactory.closeConnection(conn,stmt,rs);
+//			} catch (Exception ex) { 
+//				System.out.println("Problemas ao fechar a conexão! Erro: " + ex.getMessage());
+//			}
+//		}
+//		return lista; 
+//	}
 
 
 	@Override

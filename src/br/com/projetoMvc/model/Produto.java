@@ -3,17 +3,27 @@ package br.com.projetoMvc.model;
 public class Produto {
 
 	private int id; 
-	private String descricao; 
+	private String nome; 
+	private Double CustoProduto; 
+	private Boolean isAtivo; 
+	private Double margemLucro; 
 	
 	public Produto () {
 		
 	}
+	
+	
 
-	public Produto(int id, String descricao) {
+	public Produto(int id, String nome, Double custoProduto, Boolean isAtivo, double margemLucro) {
 		super();
 		this.id = id;
-		this.descricao = descricao;
+		this.nome = nome;
+		CustoProduto = custoProduto;
+		this.isAtivo = isAtivo;
+		this.margemLucro=margemLucro; 
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -23,13 +33,41 @@ public class Produto {
 		this.id = id;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	
+
+	public Double getCustoProduto() {
+		return CustoProduto;
+	}
+
+	public void setCustoProduto(Double custoProduto) {
+		CustoProduto = custoProduto;
+	}
+
+	public Boolean getIsAtivo() {
+		return isAtivo;
+	}
+
+	public void setIsAtivo(Boolean isAtivo) {
+		this.isAtivo = isAtivo;
+	}
+
+
+
+	public Double getMargemLucro() {
+		return margemLucro;
+	}
+
+
+
+	public void setMargemLucro(Double margemLucro) {
+		this.margemLucro = margemLucro;
+	}
+
 	
 }
