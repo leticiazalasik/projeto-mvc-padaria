@@ -96,8 +96,37 @@ public class DoceDAOImpl implements GenericDAO{
 
 		@Override
 		public Boolean cadastrar(Object object) {
-			// TODO Auto-generated method stub
-			return null;
+
+		Doce doce = (Doce) object; 
+		PreparedStatement stmt = null;
+		String sql = "INSERT INTO doce (nome, custoProduto, isAtivo, margemLucro, opcaoTamanho) "
+		           + "VALUES (?, ?, ?, ?, ?)";
+		
+	try { 
+		stmt=conn.prepareStatement(sql);
+		stmt.setString(1, doce.getNome());
+		stmt.setDouble(2, doce.getCustoProduto());
+		stmt.setBoolean(3, doce.getIsAtivo());
+		stmt.setDouble(4, doce.getMargemLucro());
+		stmt.setString(5, doce.getOpcaoTamanho());
+		
+		stmt.execute();
+		return true; 
+	} catch (SQLException ex) { 
+		System.out.println("Problemas na DAO ao cadastrar produto! Erro: " + ex.getMessage());
+		ex.printStackTrace();
+		return false; 
+		
+	} finally { 
+		try { 
+			ConnectionFactory.closeConnection(conn, stmt);
+			} catch (Exception ex) {
+				System.out.println("Probelmas ao fechar conexão. Erro: " + ex.getMessage());
+			ex.printStackTrace();
+			}
+	}
+		
+				
 		}
 
 		@Override

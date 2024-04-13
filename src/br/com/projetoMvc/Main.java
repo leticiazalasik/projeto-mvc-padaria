@@ -79,6 +79,19 @@ public class Main {
 			JOptionPane.showMessageDialog(null, "Não existe produto com esse código na lista");
 		}
 		
+		//Cadastrar novo doce 
+		JOptionPane.showMessageDialog(null, "*****\n Cadastro de produto novo: "); 
+		Doce doce1 = new Doce(); 
+		doce1.setNome(JOptionPane.showInputDialog("Digite o nome: "));
+		doce1.setCustoProduto(Double.parseDouble(JOptionPane.showInputDialog("Digite o custo do produto: ")));
+		doce1.setIsAtivo(Boolean.parseBoolean(JOptionPane.showInputDialog("Digite se o produto está ativo: ")));
+		doce1.setMargemLucro(Double.parseDouble(JOptionPane.showInputDialog("Digite a porcentagem de lucro: ")));
+		doce1.setOpcaoTamanho(JOptionPane.showInputDialog("Inteiro/Pedaço: "));
+
+		controller.cadastrar(doce1); 
+		
+		String input = JOptionPane.showInputDialog("Digite o texto: ");
+
 		
 	}
 

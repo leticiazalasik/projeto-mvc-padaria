@@ -3,6 +3,8 @@ package br.com.projetoMvc.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.com.projetoMvc.DAO.DoceDAOImpl;
 import br.com.projetoMvc.DAO.GenericDAO;
 import br.com.projetoMvc.model.Doce;
@@ -43,4 +45,24 @@ public class DoceController {
 		}
 	}
 
+	
+	public void cadastrar (Doce doce) {
+		List <Doce> listaDoces = new ArrayList<Doce>();
+		
+		try { 
+			GenericDAO dao = new DoceDAOImpl(); 
+			
+			if (dao.cadastrar(doce)) {
+			JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso");
+		
+			} else { 
+			JOptionPane.showMessageDialog(null, "Problemas na DAO ao cadastrar produto");
+		}
+			
+	}catch(Exception e) {
+		JOptionPane.showMessageDialog(null, "Erro na controller ao casdatrar produto");
+		e.printStackTrace();
+	}
 }
+}
+
