@@ -4,7 +4,7 @@ public class Produto {
 
 	private int id; 
 	private String nome; 
-	private Double CustoProduto; 
+	private Double custoProduto; 
 	private Boolean isAtivo; 
 	private Double margemLucro; 
 	
@@ -18,7 +18,7 @@ public class Produto {
 		super();
 		this.id = id;
 		this.nome = nome;
-		CustoProduto = custoProduto;
+		this.custoProduto = custoProduto;
 		this.isAtivo = isAtivo;
 		this.margemLucro=margemLucro; 
 	}
@@ -42,11 +42,11 @@ public class Produto {
 	}
 
 	public Double getCustoProduto() {
-		return CustoProduto;
+		return custoProduto;
 	}
 
 	public void setCustoProduto(Double custoProduto) {
-		CustoProduto = custoProduto;
+		this.custoProduto = custoProduto;
 	}
 
 	public Boolean getIsAtivo() {

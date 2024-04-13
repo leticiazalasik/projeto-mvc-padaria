@@ -1,25 +1,20 @@
 package br.com.projetoMvc.model;
 
-public class Doces extends Produto {
+public class Doce extends Produto {
 	
 	private String opcaoTamanho;
 	
 	
 
-	public Doces(String opcaoTamanho) {
+	public Doce() {
 		super();
-		this.opcaoTamanho = opcaoTamanho;
-	}
-
-	
-	public Doces() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
-	public Doces(int id, String nome, Double custoProduto, Boolean isAtivo, Double margemLucro) {
+	public Doce(int id, String nome, Double custoProduto, Boolean isAtivo, Double margemLucro, String opcaoTamanho) {
 		super(id, nome, custoProduto, isAtivo, margemLucro);
+		this.opcaoTamanho = opcaoTamanho;
+
 		// TODO Auto-generated constructor stub
 	}
 
