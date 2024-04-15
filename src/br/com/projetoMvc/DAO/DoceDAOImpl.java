@@ -128,6 +128,28 @@ public class DoceDAOImpl implements GenericDAO{
 		
 				
 		}
+		@Override
+		public void excluir(int id) {
+		PreparedStatement stmt = null; 
+		String sql = "DELETE FROM doce WHERE id= "+ "(?)"; 
+		
+		try { 
+			stmt =conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+			stmt.executeUpdate(); 
+		} catch (SQLException ex) { 
+			System.out.println("Problemas na DAO ao excluir produto! Erro: " + ex.getMessage());
+			ex.printStackTrace();
+		} finally { 
+			try { 
+				ConnectionFactory.closeConnection(conn, stmt);
+			} catch (Exception ex) { 
+				System.out.println("Problemas ao fechar conexão! Erro: " + ex.getMessage());
+				ex.printStackTrace();
+			}
+		}
+			
+		}
 
 		@Override
 		public Boolean alterar(Object object) {
@@ -135,10 +157,5 @@ public class DoceDAOImpl implements GenericDAO{
 			return null;
 		}
 
-		@Override
-		public void excluir(int id) {
-			// TODO Auto-generated method stub
-			
-		}
-
+		
 }

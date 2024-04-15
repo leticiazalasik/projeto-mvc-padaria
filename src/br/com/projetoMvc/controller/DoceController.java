@@ -64,5 +64,41 @@ public class DoceController {
 		e.printStackTrace();
 	}
 }
+	
+	private boolean validarId (int id) { 
+		try { 
+			GenericDAO dao = new DoceDAOImpl(); 
+			Doce doce = (Doce) dao.listaPorId(id);
+			
+			if (doce==null) { 
+				return false; 
+			} else { 
+				return true; 
+			}
+		} catch (Exception e) { 
+			System.out.println("erro na controller ao excluir produto.");
+			e.printStackTrace();
+			return false; 
+		}
+	}
+	
+	public Boolean excluir (int id) { 
+		try { 
+			if (!validarId(id)) { 
+				return false; 
+			} 
+			GenericDAO dao = new DoceDAOImpl(); 
+	        dao.excluir(id); 
+	        return true; 
+ 
+		} catch (Exception e) { 
+			System.out.println("Erro ma controller ao Excluir produto.");
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	
 }
 
