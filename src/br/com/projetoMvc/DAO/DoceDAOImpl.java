@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import br.com.projetoMvc.model.Doce;
+import br.com.projetoMvc.model.Doce;
 import br.com.projetoMvc.util.ConnectionFactory;
 
 public class DoceDAOImpl implements GenericDAO{
@@ -48,7 +49,7 @@ public class DoceDAOImpl implements GenericDAO{
 					lista.add(doce); 
 				}
 			} catch (SQLException ex) { 
-				System.out.println("Problemas na DAO ao listar produto! Erro: " + ex.getMessage());
+				System.out.println("Problemas na DAO ao listar doce! Erro: " + ex.getMessage());
 				ex.printStackTrace();
 			} finally { 
 				try { 
@@ -77,7 +78,7 @@ public class DoceDAOImpl implements GenericDAO{
 			
 			if (rs.next()) { 
 			doce = new Doce (rs.getInt("id"), rs.getString("nome"), rs.getDouble("custoProduto"), rs.getBoolean("isAtivo"), rs.getDouble("margemLucro"),rs.getString("opcaoTamanho")); 
-		 		JOptionPane.showMessageDialog(null, "Produto localizado!");
+		 		JOptionPane.showMessageDialog(null, "Doce localizado!");
 			}
 		} catch (SQLException ex){
 	System.out.println("Problemas na DAO, Erro: " + ex.getMessage());
@@ -113,7 +114,7 @@ public class DoceDAOImpl implements GenericDAO{
 		stmt.execute();
 		return true; 
 	} catch (SQLException ex) { 
-		System.out.println("Problemas na DAO ao cadastrar produto! Erro: " + ex.getMessage());
+		System.out.println("Problemas na DAO ao cadastrar doce! Erro: " + ex.getMessage());
 		ex.printStackTrace();
 		return false; 
 		
@@ -138,7 +139,7 @@ public class DoceDAOImpl implements GenericDAO{
 			stmt.setInt(1, id);
 			stmt.executeUpdate(); 
 		} catch (SQLException ex) { 
-			System.out.println("Problemas na DAO ao excluir produto! Erro: " + ex.getMessage());
+			System.out.println("Problemas na DAO ao excluir doce! Erro: " + ex.getMessage());
 			ex.printStackTrace();
 		} finally { 
 			try { 
@@ -153,9 +154,40 @@ public class DoceDAOImpl implements GenericDAO{
 
 		@Override
 		public Boolean alterar(Object object) {
-			// TODO Auto-generated method stub
-			return null;
+			
+				Doce doce = (Doce) object; //primeira coisa que fazemos é converter de objeto genérico para doce 
+				PreparedStatement stmt =null;  //Objeto criado 
+				String sql = "UPDATE doce SET nome = (?), custoProduto = (?), isAtivo = (?), margemLucro = (?), opcaoTamanho = (?) WHERE id = (?)";
+
+					
+					try { 
+										
+						stmt =conn.prepareStatement(sql); 
+						stmt.setString(1, doce.getNome()); 
+						stmt.setDouble(2, doce.getCustoProduto()); 
+						stmt.setBoolean(3, doce.getIsAtivo()); 
+						stmt.setDouble(4, doce.getMargemLucro()); 
+						stmt.setString(5, doce.getOpcaoTamanho()); 
+
+						stmt.setInt(6, doce.getId()); 
+						stmt.execute();  
+						
+						return true; 
+				
+					} catch (SQLException ex) {
+						ex.printStackTrace();
+						
+						return false; 
+						
+					} finally { 
+						try { 
+							ConnectionFactory.closeConnection(conn, stmt);
+						} catch (Exception ex) { 
+							System.out.println("Problemas ao fechar conexão!");
+							ex.printStackTrace();
+						}
+					}
+				
+			}
 		}
 
-		
-}

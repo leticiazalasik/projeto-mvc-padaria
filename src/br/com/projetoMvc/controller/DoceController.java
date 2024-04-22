@@ -98,7 +98,27 @@ public class DoceController {
 		}
 	}
 	
-	
-	
+	public void alterar (Doce doce){ 
+
+		    try {  
+		        GenericDAO dao = new DoceDAOImpl();
+
+		        if (validarId(doce.getId()) == false) {
+		            JOptionPane.showMessageDialog(null, "Nenhum produto encontrado para o ID " + doce.getId());
+		            JOptionPane.showMessageDialog(null, "Erro ao alterar produto.");
+		        } else {
+		            if (dao.alterar(doce)) { 
+		                JOptionPane.showMessageDialog(null, "Produto alterado com sucesso.");
+		            } else { 
+		                JOptionPane.showMessageDialog(null, "Erro ao alterar produto.");
+		            }
+		        }
+		    } catch (Exception e) {  
+		        System.out.println("Erro no controller ao alterar produto.");
+		        e.printStackTrace();
+		    }
+		}
+
+
 }
 

@@ -10,10 +10,10 @@ public class Doce extends Produto {
 		super();
 	}
 
-
-	public Doce(int id, String nome, Double custoProduto, Boolean isAtivo, Double margemLucro, String opcaoTamanho) {
+public Doce(int id, String nome, Double custoProduto, Boolean isAtivo, Double margemLucro, String opcaoTamanho) {
 		super(id, nome, custoProduto, isAtivo, margemLucro);
 		this.opcaoTamanho = opcaoTamanho;
+	
 
 		// TODO Auto-generated constructor stub
 	}
