@@ -108,20 +108,21 @@ public class Main {
 
 		break; 
 		
-		case 5: 
-//testando o excluir 
-	
-	int op = Integer.parseInt(JOptionPane.showInputDialog("Digite o id a ser excluído: "));
-	
-	if (controller.excluir(op)) {
-		JOptionPane.showMessageDialog(null, "Produto excluído com sucesso!"); 
-	} else { 
-		controller.excluir(op); 
-		JOptionPane.showMessageDialog(null, "Erro ao excluir produto " + op); 
-	}
-		
+		case 5:
+		    // Testando o excluir
+		    int op = Integer.parseInt(JOptionPane.showInputDialog("Digite o id a ser excluído: "));
 
-		break; 
+		    if (controller.excluir(op)) {
+		        JOptionPane.showMessageDialog(null, "Produto excluído com sucesso!"); 
+		    } else { 
+		        JOptionPane.showMessageDialog(null, "Erro ao excluir produto " + op); 
+		    }
+		    
+			option = Integer.parseInt(JOptionPane.showInputDialog(menu));
+
+		    break;
+
+		    
 		
 		case 4: 
 			//Alterar 
